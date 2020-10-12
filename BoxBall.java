@@ -2,7 +2,7 @@ import java.awt.*;
 import java.awt.geom.*;
 
 /**
- * Class BouncingBall - a graphical ball that observes the effect of gravity. The ball
+ * Class BoxBall - a graphical ball that observes the effect of gravity. The ball
  * has the ability to move. Details of movement are determined by the ball itself. It
  * will fall downwards, accelerating with time due to the effect of gravity, and bounce
  * upward again when hitting the ground.
@@ -16,11 +16,8 @@ import java.awt.geom.*;
  * @version 2016.02.29
  */
 
-public class BouncingBall
+public class BoxBall
 {
-    private static final int GRAVITY = 3;  // effect of gravity
-
-    private int ballDegradation = 2;
     private Ellipse2D.Double circle;
     private Color color;
     private int diameter;
@@ -28,10 +25,11 @@ public class BouncingBall
     private int yPosition;
     private final int groundPosition;      // y position of ground
     private Canvas canvas;
-    private int ySpeed = 1;                // initial downward speed
+    private int xSpeed = 3;
+    private int ySpeed = 3; // initial downward speed
 
     /**
-     * Constructor for objects of class BouncingBall
+     * Constructor for objects of class BoxBall
      *
      * @param xPos  the horizontal coordinate of the ball
      * @param yPos  the vertical coordinate of the ball
@@ -40,7 +38,7 @@ public class BouncingBall
      * @param groundPos  the position of the ground (where the wall will bounce)
      * @param drawingCanvas  the canvas to draw this ball on
      */
-    public BouncingBall(int xPos, int yPos, int ballDiameter, Color ballColor,
+    public BoxBall(int xPos, int yPos, int ballDiameter, Color ballColor,
                         int groundPos, Canvas drawingCanvas)
     {
         xPosition = xPos;
@@ -75,21 +73,34 @@ public class BouncingBall
     {
         // remove from canvas at the current position
         erase();
+        
+        // line positions
+        int right_side = 550;
+        int bottom = 400;
+        int top = 25;
+        int left_side = 50;
             
         // compute new position
-        //speeds up falling speed
-        ySpeed += GRAVITY;
-        // Moves ball down
+        
         yPosition += ySpeed;
-        // Moves ball sideways
-        xPosition +=2;
-
-        // check if it has hit the ground
-        if (yPosition >= (groundPosition - diameter) && ySpeed > 0) {
-            yPosition = (int)(groundPosition - diameter);
-            ySpeed = -ySpeed + ballDegradation; 
+        xPosition += xSpeed;
+        
+        if (xPosition > (right_side - (diameter + 3))) {
+          xSpeed = -xSpeed;
         }
-
+        
+        if (yPosition > (bottom - (diameter + 3))) {
+          ySpeed = -ySpeed;
+        }
+        
+        if (yPosition < (top + 3)) {
+          ySpeed = -ySpeed;
+        }
+        
+        if (xPosition < (left_side + 3)) {
+          xSpeed = -xSpeed;
+        }
+        
         // draw again at new position
         draw();
     }    
