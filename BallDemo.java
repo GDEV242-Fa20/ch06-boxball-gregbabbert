@@ -69,7 +69,7 @@ public class BallDemo
         myCanvas.drawLine(550, ground, 550, 25);
 
         // create and show the balls
-        BoxBall ball = new BoxBall(50, 50, 16, Color.BLUE, ground, myCanvas);
+        BoxBall ball = new BoxBall(55, 50, 16, Color.BLUE, ground, myCanvas);
         ball.draw();
         BoxBall ball2 = new BoxBall(70, 80, 20, Color.RED, ground, myCanvas);
         ball2.draw();

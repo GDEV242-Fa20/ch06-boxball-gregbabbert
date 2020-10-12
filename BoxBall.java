@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.geom.*;
+import java.util.Random;
 
 /**
  * Class BoxBall - a graphical ball that observes the effect of gravity. The ball
@@ -23,10 +24,12 @@ public class BoxBall
     private int diameter;
     private int xPosition;
     private int yPosition;
+    private int xSpeed;
+    private int ySpeed;
+    private int direction;
     private final int groundPosition;      // y position of ground
     private Canvas canvas;
-    private int xSpeed = 3;
-    private int ySpeed = 3; // initial downward speed
+    private Random randomx;
 
     /**
      * Constructor for objects of class BoxBall
@@ -47,6 +50,9 @@ public class BoxBall
         diameter = ballDiameter;
         groundPosition = groundPos;
         canvas = drawingCanvas;
+        randomx = new Random();
+        xSpeed = (randomx.nextInt(7)) + 1;
+        ySpeed = (randomx.nextInt(7)) + 1;
     }
 
     /**
@@ -85,19 +91,19 @@ public class BoxBall
         yPosition += ySpeed;
         xPosition += xSpeed;
         
-        if (xPosition > (right_side - (diameter + 3))) {
+        if (xPosition > (right_side - (diameter + 6))) {
           xSpeed = -xSpeed;
         }
         
-        if (yPosition > (bottom - (diameter + 3))) {
+        if (yPosition > (bottom - (diameter + 7))) {
           ySpeed = -ySpeed;
         }
         
-        if (yPosition < (top + 3)) {
+        if (yPosition < (top + 7)) {
           ySpeed = -ySpeed;
         }
         
-        if (xPosition < (left_side + 3)) {
+        if (xPosition < (left_side + 7)) {
           xSpeed = -xSpeed;
         }
         
