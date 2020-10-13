@@ -3,12 +3,10 @@ import java.awt.geom.*;
 import java.util.Random;
 
 /**
- * Class BoxBall - a graphical ball that observes the effect of gravity. The ball
+ * Class BoxBall - a graphical ball that bounces around a box. The ball
  * has the ability to move. Details of movement are determined by the ball itself. It
- * will fall downwards, accelerating with time due to the effect of gravity, and bounce
- * upward again when hitting the ground.
+ * will move in a random direction at a random speed and bounc off the walls.
  *
- * This movement can be initiated by repeated calls to the "move" method.
  * 
  * @author Greg Babbert
  *
