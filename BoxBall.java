@@ -30,8 +30,6 @@ public class BoxBall
     /**
      * Constructor for objects of class BoxBall
      *
-     * @param xPos  the horizontal coordinate of the ball
-     * @param yPos  the vertical coordinate of the ball
      * @param ballDiameter  the diameter (in pixels) of the ball
      * @param ballColor  the color of the ball
      * @param groundPos  the position of the ground (where the wall will bounce)
