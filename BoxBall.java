@@ -41,16 +41,16 @@ public class BoxBall
      * @param groundPos  the position of the ground (where the wall will bounce)
      * @param drawingCanvas  the canvas to draw this ball on
      */
-    public BoxBall(int xPos, int yPos, int ballDiameter, Color ballColor,
+    public BoxBall(int ballDiameter, Color ballColor,
                         int groundPos, Canvas drawingCanvas)
     {
-        xPosition = xPos;
-        yPosition = yPos;
         color = ballColor;
         diameter = ballDiameter;
         groundPosition = groundPos;
         canvas = drawingCanvas;
         randomx = new Random();
+        xPosition = (randomx.nextInt(350)) + 100;
+        yPosition = (randomx.nextInt(300)) + 50;
         xSpeed = (randomx.nextInt(7)) + 1;
         ySpeed = (randomx.nextInt(7)) + 1;
     }
@@ -91,7 +91,7 @@ public class BoxBall
         yPosition += ySpeed;
         xPosition += xSpeed;
         
-        if (xPosition > (right_side - (diameter + 6))) {
+        if (xPosition > (right_side - (diameter + 7))) {
           xSpeed = -xSpeed;
         }
         
@@ -103,7 +103,7 @@ public class BoxBall
           ySpeed = -ySpeed;
         }
         
-        if (xPosition < (left_side + 7)) {
+        if (xPosition < (left_side + 8)) {
           xSpeed = -xSpeed;
         }
         
