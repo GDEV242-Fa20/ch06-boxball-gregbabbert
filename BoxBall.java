@@ -10,11 +10,9 @@ import java.util.Random;
  *
  * This movement can be initiated by repeated calls to the "move" method.
  * 
- * @author Michael Kölling (mik)
- * @author David J. Barnes
- * @author Bruce Quig
+ * @author Greg Babbert
  *
- * @version 2016.02.29
+ * @version 2020.10.12
  */
 
 public class BoxBall
@@ -29,7 +27,7 @@ public class BoxBall
     private int direction;
     private final int groundPosition;      // y position of ground
     private Canvas canvas;
-    private Random randomx;
+    private Random random;
 
     /**
      * Constructor for objects of class BoxBall
@@ -48,11 +46,11 @@ public class BoxBall
         diameter = ballDiameter;
         groundPosition = groundPos;
         canvas = drawingCanvas;
-        randomx = new Random();
-        xPosition = (randomx.nextInt(350)) + 100;
-        yPosition = (randomx.nextInt(300)) + 50;
-        xSpeed = (randomx.nextInt(7)) + 1;
-        ySpeed = (randomx.nextInt(7)) + 1;
+        random = new Random();
+        xPosition = (random.nextInt(350)) + 100;
+        yPosition = (random.nextInt(300)) + 50;
+        xSpeed = (random.nextInt(7)) + 1;
+        ySpeed = (random.nextInt(7)) + 1;
     }
 
     /**
